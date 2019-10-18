@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sortir.com{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="{{ asset('open-iconic/font/css/open-iconic.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ asset('img/favicon.png') }}">
+    <script src="{{ asset("js/jquery.min.js") }}"></script>
+    <script src="{{ asset('js/popper.js') }}"></script>
+    <script src="{{ asset('js/tooltip.js') }}"></script>
+    <script src="{{ asset("bootstrap/js/bootstrap.min.js") }}"></script>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <a class="site-title" href="" title="Sortir.com | Home">
+            <img src="{{ asset('img/sortir_.png') }}" alt="Sortir.com"> Sortir.com
+        </a>
+
+    </header>
+
+    <main>
+        <div class="flashes">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} alert-dismissible fade show"  role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        {% block main %}
+            <form action="{{ path('login') }}" method="post">
+                <div>
+                    <label for="username">Identifiant :</label>
+                    <input type="text" id="username" name="_username" value="{% if last_username %}{{ last_username }}{% endif %}"/>
+                </div>
+                <div>
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="_password" />
+                </div>
+                <div>
+                    <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+                    <label for="remember_me" class="form-check-inline">Se souvenir de moi</label>
+                    <a href="" title="passwordOublie">Mot de passe oublié</a>
+                </div>
+
+                {% if error %}
+                    <div><ul><li>{{ error.messageKey|trans(error.messageData, 'security') }}</li></ul></div>
+                {% endif %}
+
+                <button type="submit">Connexion</button>
+            </form>
+
+        {% endblock %}
+
+    </main>
+
+    <footer>
+        © {{ "now"|date("Y") }} Sortir.com
+    </footer>
+    {% block javascript %}{% endblock %}
+</div>
+</body>
+</html>
+
+
+

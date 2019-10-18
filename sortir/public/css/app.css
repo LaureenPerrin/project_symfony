@@ -1,0 +1,343 @@
+/**
+global styles
+ */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    min-width: 100%;
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.red span{
+    color : red;
+}
+
+.red:hover span{
+    color : silver;
+}
+
+.flashes .flash {
+    padding: 20px;
+    background-color: dodgerblue;
+    color: #FFF;
+    font-size: 24px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 3px;
+}
+
+
+/**
+header
+ */
+.site-title {
+    display: flex;
+    align-items: center;
+    font-size: 48px;
+    width: 45%;
+}
+
+header{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: #dddddd;
+}
+
+.site-title img {
+    width: 15%;
+    display: block;
+    margin-right: 5px;
+}
+
+#tableauSortie {
+    min-height: 300px;
+    height: 100px;
+    min-width: 100%;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 20px;
+    border: 2px solid #dddddd;
+    border-radius: 5px;
+}
+
+thead {
+    background-color: #dddddd;
+}
+
+th {
+    border: 2px solid black!important;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#campus_select {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#debut_nomSortie {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+td {
+    border-left: 2px solid black !important;
+    border-right: 2px solid black !important;
+}
+
+tbody {
+    border: 2px solid black;
+    border-bottom: transparent;
+}
+
+header nav ul {
+    margin: 5px 0;
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+header nav a {
+    display: block;
+    padding: 5px 8px;
+
+}
+
+form{
+    margin-bottom: 15px;
+}
+
+nav {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#date_jour {
+    align-self: flex-end;
+    margin-bottom: 0px;
+}
+
+#name_user {
+    align-self: flex-end;
+}
+
+#menu_date_name {
+    display: flex;
+    flex-direction: column;
+}
+
+header nav div.nav-right{
+    position: absolute;
+    right: 10px;
+    top:25px;
+    width: 25px;
+}
+
+header nav div.nav-right img{
+    width: 25px;
+}
+
+    /**
+    main
+     */
+main {
+    padding: 30px 0;
+    border-top: 1px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3;
+    width: 85%;
+    margin: auto;
+}
+
+h1 {
+    margin: 0;
+}
+
+/**
+footer
+ */
+footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #dddddd;
+}
+/**
+list & detail pages
+ */
+.ideas-list a {
+    display: block;
+    border: 1px solid #D3D3D3;
+    padding: 10px 5px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.idea-meta {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.delete-idea{
+    color:#FF0000;
+    position: absolute;
+    right:5px;
+    top: 1.5em;
+}
+
+.idea-category {
+    margin-top: 10px;
+}
+
+h5 {
+    margin: 0;
+    text-decoration: none;
+}
+
+.ideas-list a:hover{
+    text-decoration: none !important;
+}
+
+.add-category{
+    font-size: 50%;
+    color:green;
+}
+
+.no-items{
+    text-align: center;
+    padding: 1rem 0;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/**
+category
+ */
+
+.categorys-list div{
+    display: block;
+    border: 1px solid #D3D3D3;
+    padding: 10px 5px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.category-meta {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.delete-category{
+    color:#FF0000;
+    position: absolute;
+    right:5px;
+    margin-top: 0.2em;
+}
+
+.update-category{
+    color:#00FF00;
+    position: absolute;
+    right:35px;
+    margin-top: 0.2em;
+}
+
+/**
+forms
+ */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+form input, form textarea, form select {
+    margin-bottom: 12px;
+    min-width: 200px;
+    border-radius: 4px;
+}
+
+form input[type="checkbox"]{
+    min-width: auto;
+}
+
+
+form select {
+    padding-top:4px;
+    padding-bottom:4px;
+}
+
+
+form textarea {
+    min-height: 70px;
+}
+
+form button {
+    padding: 5px 10px;
+}
+
+form ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+form ul > li {
+    display: block;
+    font-weight: bold;
+    color: #AA3333;
+}
+
+/*Pagination*/
+.pagination{
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination li{
+    padding:2px;
+    margin: 0 2px;
+    border:1px solid silver;
+    border-radius: 3px;
+}
+
+.pagination li:hover{
+    border-color: green;
+}
+
+.pagination li.active:hover{
+    cursor: not-allowed;
+    border-color: red;
+}
+
+.pagination li.active:hover a{
+    cursor: not-allowed;
+}
+
+#form_list_tri {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#premiere_zone_tri2 {
+    display: flex;
+}
+
+#premiere_zone_tri {
+    width: 55%;
+}

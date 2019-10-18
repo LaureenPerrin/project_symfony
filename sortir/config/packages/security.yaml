@@ -1,0 +1,61 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        my_provider:
+            entity:
+                #Chemin vers l entite
+                class: App\Entity\Participant
+                #Propriete utilisee pour l authentification
+                property: pseudo
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            provider: my_provider
+            anonymous: true
+            #Route pour le login et la validation du login
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: home
+
+
+            #En cas de changement d utilisateur on logout l ancien
+            logout_on_user_change: true
+
+            #Route pour le logout
+            logout:
+                path: logout
+                target: login
+
+
+            #Se souvenir de moi
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+            # activate different ways to authenticate
+
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/home, roles: ROLE_USER }
+        #- { path: ^/ideas/add, roles: ROLE_USER }
+       # - { path: '^/', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    #hierarchy des roles: ici ROLE_ADMIN a aussi les droits de ROLE_USER
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+
+    #Encodage pour le mot de passe
+    encoders:
+        App\Entity\Participant:
+            algorithm: argon2i

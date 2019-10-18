@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sortie{% endblock %}
+
+{% block main %}
+    <h1>Afficher une sortie</h1>
+
+    <div>
+        <div>
+            <div>
+                <p><strong>Nom de la sortie :</strong> {{ sortie.nomSortie }}</p>
+            </div>
+            <div>
+                <p><strong>Date et heure de la sortie :</strong> {{ sortie.dateDebut ? sortie.dateDebut|date('d-m-Y H:i:s') : '' }}</p>
+            </div>
+            <div>
+                <p><strong>Date limite d'inscription :</strong> {{ sortie.dateCloture ? sortie.dateDebut|date('d-m-Y') }}</p>
+            </div>
+            <div>
+                <p><strong>Nombre de places :</strong> {{ sortie.nbinscriptionsmax }}</p>
+            </div>
+            <div>
+                <p><strong>Durée :</strong> {{ sortie.duree }} minutes</p>
+            </div>
+            <div>
+                <p><strong>Description et infos :</strong> {{ sortie.descriptioninfos }}</p>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <p><strong>Campus :</strong> {{ sortie.siteOrganisateur.nomCampus }}</p>
+            </div>
+            <div>
+                <p><strong>Lieu :</strong> {{ sortie.lieu.nomLieu }}</p>
+            </div>
+            <div>
+                <p><strong>Rue :</strong> {{ sortie.lieu.rue }}</p>
+            </div>
+            <div>
+                <p><strong>Code postal :</strong> {{ sortie.lieu.ville.codePostal }}</p>
+            </div>
+            <div>
+                <p><strong>Latitude :</strong> {{ sortie.lieu.latitude }}</p>
+            </div>
+            <div>
+                <p><strong>Longitude :</strong> {{ sortie.lieu.longitude }}</p>
+            </div>
+        </div>
+        <button class="btn"><a href="{{ path('home') }}">Retour</a></button>
+
+        <a href="{{ path('sortie_edit', {'id': sortie.id}) }}">edit</a>
+
+        {{ include('sortie/_delete_form.html.twig') }}
+
+    </div>
+
+
+
+    <div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Nom</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for participant in sortie.participantsInscrits %}
+
+                <tr>
+                        <td>{{ participant.pseudo }}</td>
+                        <td><a href="{{ path('participant_show', {'id': participant.id }) }}">{{ participant.getNomParticipant() }}</a></td>
+                </tr>
+
+            {% else %}
+                <tr>
+                    <td colspan="10">Aucuns participants inscrits</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

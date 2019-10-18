@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block main %}
+    <h1>Mon profil</h1>
+
+    {{ include('participant/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+    <button class="btn"><a href="{{ path("home") }}" title="Annuler">Annuler</a></button>
+{% endblock %}

@@ -1,0 +1,46 @@
+{{ form_start(form) }}
+
+<div class="">
+    {{ form_row(form.nom_sortie) }}
+</div>
+<div class="">
+    {{ form_row(form.dateDebut) }}
+</div>
+<div class="">
+    {{ form_row(form.dateCloture) }}
+</div>
+<div class="">
+    {{ form_row(form.nbinscriptionsmax) }}
+</div>
+<div class="">
+    {{ form_row(form.duree) }}
+</div>
+<div class="">
+    {{ form_row(form.descriptioninfos) }}
+</div>
+<div class="">
+<label for="campus">Campus : {{ participant.campus.nomCampus }}<input type="hidden" name="campus" value="{{ participant.campus.nomCampus }}"></label>
+</div>
+<div class="">
+    <label for="rue"> Ville : <input type="text" name="ville"></label>
+</div>
+<div class="">
+    <label for="rue"> Lieu : <input type="text" name="lieu"></label>
+</div>
+<div class="">
+    <label for="rue"> Rue : <input type="text" name="rue"> </label>
+</div>
+<div class="">
+    <label for="code_postal"> Code postal : <input type="text" name="code_postal"> </label>
+</div>
+<div class="">
+    <label for="latitude"> Latitude : <input type="text" name="latitude"> </label>
+</div>
+<div class="">
+    <label for="longitude"> Longitude : <input type="text" name="longitude"> </label>
+</div>
+
+    <button class="btn" type="submit" name="action" value="enregistrer">Enregistrer</button>
+    <button class="btn" type="submit" name="action" value="publier">Publier la sortie</button>
+    <button class="btn" type=""><a href="{{ path("home") }}" title="Annuler la sortie">Annuler</a></button>
+{{ form_end(form) }}

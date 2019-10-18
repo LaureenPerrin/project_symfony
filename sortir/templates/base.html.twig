@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sortir.com{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="{{ asset('open-iconic/font/css/open-iconic.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ asset('img/sortir_.png') }}">
+    <script src="{{ asset("js/jquery.min.js") }}"></script>
+    <script src="{{ asset('js/popper.js') }}"></script>
+    <script src="{{ asset('js/tooltip.js') }}"></script>
+    <script src="{{ asset("bootstrap/js/bootstrap.min.js") }}"></script>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <a class="site-title" href="{{ path('home') }}" title="Sortir.com | Home">
+            <img src="{{ asset('img/sortir_.png') }}" alt="Sortir.com"> Sortir.com
+        </a>
+        <div id="menu_date_name">
+        <nav>
+
+            <ul>
+                {% if is_granted("ROLE_ADMIN")  %}
+                    <li><a href="" title="ville">Ville</a></li>
+                    <li><a href="" title="campus">Campus</a></li>
+                {% endif %}
+
+                {% if is_granted("ROLE_USER") or is_granted("ROLE_ADMIN")  %}
+                    <li><a href="{{ path("home") }}" title="Accueil">Accueil</a></li>
+                    <li><a href=" {{ path('participant_edit', {id : app.user.id}) }}" title="Sortir.com">Mon profil</a></li>
+                    <li><a href="{{ path("logout") }}" title="Deconnexion">Se déconnecter</a></li>
+                {% endif %}
+
+            </ul>
+
+
+        </nav>
+        <p id="date_jour">Date du jour : {{ "now"|date("d/m/Y") }}  </p><p id="name_user">Participant : {{ app.user.username|default('') }}</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="flashes">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} alert-dismissible fade show"  role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        {% block main %}
+
+
+        {% endblock %}
+
+    </main>
+
+    <footer>
+        © {{ "now"|date("Y") }} Sortir.com
+    </footer>
+    {% block javascript %}{% endblock %}
+</div>
+</body>
+</html>

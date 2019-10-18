@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Participant{% endblock %}
+
+{% block main %}
+    <h1>{{ participant.username }}</h1>
+           <div>
+               <p><strong>Prénom :</strong>{{ participant.prenom }}</p>
+            </div>
+            <div>
+                <p><strong>Nom :</strong>{{ participant.nomParticipant }}</p>
+            </div>
+            <div>
+                <p><strong>Téléphone :</strong>{{ participant.telephone }}</p>
+            </div>
+            <div>
+                <p><strong>Email :</strong>{{ participant.email }}</p>
+            </div>
+            <div>
+                <p><strong>Campus :</strong>{{ participant.campus.nomCampus }}</p>
+            </div>
+
+            <button class="btn"><a href="{{ path('home') }}">Retour</a></button>
+
+            {% if userConnecte.administrateur == true %}
+                {{ include('participant/_delete_form.html.twig') }}
+            {% endif %}
+
+{% endblock %}
